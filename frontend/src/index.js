@@ -4,10 +4,13 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import HomeScreen from './components/HomeScreen'
 import DetailScreen from './components/DetailScreen'
 import Loadingpage from './components/Loadingpage'
+import CreateEvent from './components/CreateEvents'
+
 import './index.css'
 import './bootstrap.min.css'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
+import Search from './components/Search'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
@@ -17,6 +20,8 @@ root.render(
         <Route index element={<Loadingpage />} />
         <Route path='events' element={<HomeScreen />} />
         <Route path='events/:id' element={<DetailScreen />} />
+        <Route path='events/search/:keyword' element={<Search />} />
+        <Route path='newevent' element={<CreateEvent />} />
 
         <Route
           path='*'

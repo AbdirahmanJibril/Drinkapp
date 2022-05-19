@@ -1,6 +1,6 @@
 const Events = [
   {
-    id: 1,
+    id: '1',
     time: '18:00',
     title: 'Coffee event',
     creator: 'Abdi',
@@ -9,14 +9,14 @@ const Events = [
 
     EventLocation: {
       name: 'Bristol',
-      // latitude: number,
-      // longitude: number,
+      latitude: 'number',
+      longitude: 'number',
     },
 
     EventComment: {
       user: 'User',
       timestamp: '10 may 2022',
-      message:
+      description:
         'Nice Coffee event to catchup with your friends, the long awaited return of our coffee event is now happening on the night of 10 May, reserve your place as early as possible to prevent disappointment',
     },
 
@@ -27,7 +27,7 @@ const Events = [
   },
 
   {
-    id: 2,
+    id: '2',
     time: '15:00',
     title: 'Coctail event',
     creator: 'Josh',
@@ -36,14 +36,14 @@ const Events = [
 
     EventLocation: {
       name: 'London',
-      // latitude: number,
-      // longitude: number,
+      latitude: 'number',
+      longitude: 'number',
     },
 
     EventComment: {
       user: 'User',
       timestamp: '10 may 2022',
-      message:
+      description:
         'Brilliant Coctail event, the long awaited return of our Coctail event is now happening on the night of 10 May, reserve your place as early as possible to prevent disappointment',
     },
 
@@ -53,7 +53,7 @@ const Events = [
     },
   },
   {
-    id: 3,
+    id: '3',
     time: '14:00',
     title: 'soft drink event',
     creator: 'Ali',
@@ -62,14 +62,14 @@ const Events = [
 
     EventLocation: {
       name: 'London',
-      // latitude: number,
-      // longitude: number,
+      latitude: 'number',
+      longitude: 'number',
     },
 
     EventComment: {
       user: 'User',
       timestamp: '10 may 2022',
-      message:
+      description:
         'Brilliant Coctail event, the long awaited return of our Coctail event is now happening on the night of 10 May, reserve your place as early as possible to prevent disappointment',
     },
 

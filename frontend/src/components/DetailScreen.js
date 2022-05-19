@@ -1,19 +1,32 @@
 import React from 'react'
+import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import Events from '../evnetsSource'
 import { Card, Col, Row } from 'react-bootstrap'
+import axios from 'axios'
 
 const DetailScreen = () => {
-  let { id } = useParams()
+  const [drinkEvent, setEvent] = useState({})
 
-  const foundEvent = Events.find(e => e.id === parseInt(id))
+  let { id } = useParams()
+  useEffect(() => {
+    const fetchEvent = async () => {
+      const { data } = await axios.get(`/events/${id}`)
+
+      setEvent(data)
+    }
+    fetchEvent()
+  }, [id])
 
   return (
-    <div>
-      <Row className='py-5'>
+    <div style={{ margin: '50px 0' }}>
+      <Row className='py-3'>
+        <h2 style={{ margin: '20px 0' }}>Event Details</h2>
         <Col sm={12} md={8}>
           <Card>
-            <Card.Title as='h3'>{foundEvent.title}</Card.Title>
+            <Card.Header style={{ backgroundColor: '#4C3800', color: 'white' }}>
+              Featured
+            </Card.Header>
+            <Card.Title as='h3'>{drinkEvent.title}</Card.Title>
             <Card.Body>
               <Card.Text
                 style={{
@@ -21,20 +34,28 @@ const DetailScreen = () => {
 
                   textAlign: 'left',
                 }}>
-                {foundEvent.EventComment.message}
+                {drinkEvent.description}
               </Card.Text>
             </Card.Body>
           </Card>
         </Col>
         <Col sm={12} md={4}>
           <Card>
+            <Card.Header style={{ backgroundColor: '#4C3800', color: 'white' }}>
+              Key event info
+            </Card.Header>
             <Card.Body style={{ textAlign: 'left' }}>
-              <Card.Text>Organizer : {foundEvent.creator}</Card.Text>
-              <Card.Text>Guests : {foundEvent.guests.join(' , ')}</Card.Text>
-              <Card.Text>Location : {foundEvent.EventLocation.name}</Card.Text>
+              <Card.Text>Organizer : {drinkEvent.user}</Card.Text>
+              <Card.Text>Guests : {[drinkEvent.guests].join(' ')}</Card.Text>
+              <Card.Text>Location : {drinkEvent.venue}</Card.Text>
+              <Card.Text>Event : {drinkEvent.eventType}</Card.Text>
+              <Card.Text>Event Time: {drinkEvent.time}</Card.Text>
             </Card.Body>
           </Card>
         </Col>
+      </Row>
+      <Row>
+        <Col sm={12}></Col>
       </Row>
     </div>
   )
