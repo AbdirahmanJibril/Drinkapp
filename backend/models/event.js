@@ -5,12 +5,12 @@ const eventSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  time: { type: Date },
+  time: { type: Date, required: true },
 
   createdAt: { type: Date, default: Date.now },
 
   venue: { type: String, required: true },
-
+  postcode: { type: String, required: true },
   user: {
     type: String,
     required: true,

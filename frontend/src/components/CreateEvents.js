@@ -1,18 +1,30 @@
-import React from 'react'
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+
 import axios from 'axios'
 import { Form, Row, Col, Button } from 'react-bootstrap'
 
 const CreatEvent = () => {
   const [title, setTitle] = useState('')
   const [guests, setGuests] = useState([])
-  const [time, setTime] = useState('')
+  const [time, setTime] = useState(new Date().toLocaleString())
   const [eventType, setEventType] = useState('')
   const [venue, setVenue] = useState('')
+  const [postcode, setPostcode] = useState('')
   const [user, setUser] = useState('')
   const [description, setDescription] = useState('')
 
+  const validatePostCode = () => {
+    const postcode = document.getElementById('postcode')
+    const postcodeRegEX = /^[a-zA-Z]{1,2}[0-9]{1,2}(\s?[0-9][a-zA-Z]{2}$)/i
+
+    if (!postcodeRegEX.test(postcode)) {
+      console.log('wrong postcode')
+    } else {
+      console.log('postcode is good')
+    }
+  }
+  validatePostCode()
   const navigate = useNavigate()
   const submitHandler = e => {
     e.preventDefault()
@@ -23,6 +35,7 @@ const CreatEvent = () => {
       user,
       description,
       venue,
+      postcode,
       eventType,
     })
     navigate('/events')
@@ -47,8 +60,9 @@ const CreatEvent = () => {
 
           <Form.Group id='time'>
             <Form.Label>Title</Form.Label>
+
             <Form.Control
-              type='datetime-local'
+              type='Date'
               value={time}
               onChange={e => setTime(e.target.value)}></Form.Control>
           </Form.Group>
@@ -60,6 +74,17 @@ const CreatEvent = () => {
               placeholder='Enter Event Venue'
               value={venue}
               onChange={e => setVenue(e.target.value)}></Form.Control>
+          </Form.Group>
+
+          <Form.Group id='postcode'>
+            <Form.Label>Post Code</Form.Label>
+            <Form.Control
+              type='text'
+              placeholder='Enter Event Postcode'
+              value={postcode}
+              onChange={e =>
+                setPostcode(e.target.value).lowerCase()
+              }></Form.Control>
           </Form.Group>
 
           <Form.Group id='user'>
@@ -96,7 +121,7 @@ const CreatEvent = () => {
               onChange={e => setDescription(e.target.value)}></Form.Control>
           </Form.Group>
           <div className='d-grid gap-2'>
-            <Button type='submit' variant='dark'>
+            <Button type='button' class='btn btn-warning'>
               Submit
             </Button>
           </div>

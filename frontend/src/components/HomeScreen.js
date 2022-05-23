@@ -17,28 +17,26 @@ function HomeScreen() {
     fetchEvents()
   }, [params])
   return (
-    <div>
-      <h2 style={{ margin: '20px 0' }}>Live Events</h2>
-      <Row>
-        {Events.map(e => (
-          <Col sm={12} md={3} key={e._id}>
-            <Card>
-              <Card.Title
-                style={{ backgroundColor: '#4C3800', color: 'white' }}>
-                {e.title} {e.time}
-              </Card.Title>
-              <Card.Body>
-                {[e.description].toString().slice(0, 50) + '...'}
-              </Card.Body>
+    <Row>
+      <h2 style={{ margin: '10px 0' }}>Live Events</h2>
 
-              <Link to={`/events/${e._id}`}>Details</Link>
+      {Events.map(e => (
+        <Col sm={12} md={3} key={e._id}>
+          <Card>
+            <Card.Title style={{ backgroundColor: '#BB6B62', color: 'white' }}>
+              {e.title}
+            </Card.Title>
+            <Card.Body>
+              {[e.description].toString().slice(0, 50) + '...'}
+            </Card.Body>
 
-              <Card.Footer className='text-muted'>2 days ago</Card.Footer>
-            </Card>
-          </Col>
-        ))}
-      </Row>
-    </div>
+            <Link to={`/events/${e._id}`}>Details</Link>
+
+            <Card.Footer className='text-muted'>2 days ago</Card.Footer>
+          </Card>
+        </Col>
+      ))}
+    </Row>
   )
 }
 

@@ -1,11 +1,106 @@
+* {
+  font-family: 'Roboto', sans-serif;
+}
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 400;
+  color: #bb6b62 !important;
+}
+button {
+  background-color: #bb6b62 !important;
+  color: white;
+}
+a {
+  text-decoration: none !important;
+  color: black;
+}
+.top-section {
+  background-color: #bb6b62;
+  min-height: 40vh;
+}
 main {
   min-height: 80vh;
   text-align: center;
 }
 
+Nav.Link {
+  color: #4c3800 !important;
+}
+
 footer {
   text-align: center;
 }
-a {
-  text-decoration: none;
+
+.map-container {
+  height: 400px;
+}
+
+.mapwindow {
+  position: relative;
+}
+.sidebar {
+  background-color: rgba(35, 55, 75, 0.9);
+  color: #fff;
+  padding: 6px 12px;
+  font-family: monospace;
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 12px;
+  border-radius: 4px;
+}
+
+.marker {
+  background-image: url('../public/images/marker-icon.svg');
+  background-size: cover;
+  width: 30px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+* Marker */ .marker {
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  background-color: blue;
+  cursor: pointer;
+}
+
+.marker:before,
+.marker:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border: 1px solid blue;
+  border-radius: 50%;
+}
+
+.marker:before {
+  animation: ripple 2s linear infinite;
+}
+
+.marker:after {
+  animation: ripple 2s linear 1s infinite;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.3);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
 }

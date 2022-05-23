@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-import { useParams } from 'react-router-dom'
+
+import { Link, useParams } from 'react-router-dom'
 import { useEffect } from 'react'
-import { Row, Col, Card, CardGroup } from 'react-bootstrap'
+import { Row, Col, Card } from 'react-bootstrap'
 
 const Search = () => {
   const { keyword } = useParams()
@@ -15,25 +16,56 @@ const Search = () => {
     }
     searchEvent()
   }, [keyword])
-
+  console.log(searched)
   return (
     <div>
-      <Row></Row>
-      {searched.map(foundEvent => (
-        <Col sm={12} md={3} key={foundEvent._id}>
-          <CardGroup>
-            <Card>
-              <Card.Header
-                style={{ backgroundColor: '#4C3800', color: 'white' }}>
-                {foundEvent.venue}
-              </Card.Header>
-              <Card.Body>
-                <Card.Text>{foundEvent.description}</Card.Text>
+      <Row>
+        <h1>Search Results</h1>
+        <Col>
+          <Card sm={12} md={6}>
+            <Card.Header
+              style={{
+                backgroundColor: '#bb6b62',
+                color: 'white',
+              }}>
+              found locations
+            </Card.Header>
+            {searched.map(foundEvent => (
+              <Card.Body className='d-flex'>
+                <Col sm={2}>
+                  {' '}
+                  <Link to={`/events/${foundEvent._id}`}>
+                    {' '}
+                    <Card.Text>{foundEvent.venue}</Card.Text>
+                  </Link>
+                </Col>
+                <Col sm={8}>
+                  <Card.Text as='h6'>
+                    Description:
+                    {[foundEvent.description].toString().slice(0, 20) +
+                      '...'}{' '}
+                  </Card.Text>
+                  <Card.Text as='h6'>Organizer:{foundEvent.user} </Card.Text>
+                  <Card.Text as='h6'>Geusts:{foundEvent.guests} </Card.Text>
+                  <Card.Text as='h6'>Time:{foundEvent.time} </Card.Text>
+                </Col>
               </Card.Body>
-            </Card>
-          </CardGroup>
+            ))}
+          </Card>
         </Col>
-      ))}
+        <Col sm={12} md={6}>
+          <Card>
+            <Card.Header
+              style={{
+                backgroundColor: '#bb6b62',
+                color: 'white',
+              }}>
+              Number Events Found
+            </Card.Header>
+            <Card.Text as='h5'>{searched.length}</Card.Text>
+          </Card>
+        </Col>
+      </Row>
     </div>
   )
 }

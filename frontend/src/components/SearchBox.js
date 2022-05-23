@@ -27,9 +27,9 @@ const SearchBox = () => {
             setSearchParams({})
           }
         }}
-        placeholder='Search Events...'
+        placeholder='search by city name...'
         className='mr-sm-2 ml-sm-5'></Form.Control>
-      <Button type='submit' variant='dark' className='p-2'>
+      <Button type='submit' className='p-2'>
         Search
       </Button>
     </Form>

@@ -26,6 +26,7 @@ const creatEvent = asyncHandler(async (req, res) => {
     time: req.body.time,
     user: req.body.user,
     venue: req.body.venue,
+    postcode: req.body.postcode,
     eventType: req.body.eventType,
     guests: req.body.guests,
     description: req.body.description,
@@ -37,7 +38,9 @@ const creatEvent = asyncHandler(async (req, res) => {
 const searchLocation = asyncHandler(async (req, res) => {
   const { keyword } = req.params
 
-  const searchVenue = await eventModel.find({ ...{ venue: keyword } })
+  const searchVenue = await eventModel.find({
+    ...{ venue: new RegExp(keyword, 'i') },
+  })
 
   res.json(searchVenue)
 })

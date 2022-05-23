@@ -5,7 +5,7 @@ import HomeScreen from './components/HomeScreen'
 import DetailScreen from './components/DetailScreen'
 import Loadingpage from './components/Loadingpage'
 import CreateEvent from './components/CreateEvents'
-
+import 'mapbox-gl/dist/mapbox-gl.css'
 import './index.css'
 import './bootstrap.min.css'
 import App from './App'
