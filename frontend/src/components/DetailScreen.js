@@ -56,7 +56,7 @@ const DetailScreen = () => {
       </Col>
       <Row>
         <Col sm={12}>
-          <Map postcode={drinkEvent.postcode} />
+          <Map />
         </Col>
       </Row>
     </Row>

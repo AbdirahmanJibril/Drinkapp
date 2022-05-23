@@ -121,7 +121,7 @@ const CreatEvent = () => {
               onChange={e => setDescription(e.target.value)}></Form.Control>
           </Form.Group>
           <div className='d-grid gap-2'>
-            <Button type='button' class='btn btn-warning'>
+            <Button type='submit' class='btn btn-warning'>
               Submit
             </Button>
           </div>

@@ -18,8 +18,7 @@ function HomeScreen() {
   }, [params])
   return (
     <Row>
-      <h2 style={{ margin: '10px 0' }}>Live Events</h2>
-
+      <h2 style={{ margin: '5px 0' }}>Live Events</h2>
       {Events.map(e => (
         <Col sm={12} md={3} key={e._id}>
           <Card>

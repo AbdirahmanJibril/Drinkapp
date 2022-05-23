@@ -4,14 +4,15 @@ import 'mapbox-gl/dist/mapbox-gl.css'
 
 import mapboxgl from '!mapbox-gl' // eslint-disable-line import/no-webpack-loader-syntax
 import mbxGeocoding from '@mapbox/mapbox-sdk/services/geocoding'
+import { Col, Row } from 'react-bootstrap'
 mapboxgl.accessToken =
   'pk.eyJ1IjoiaWJuZWdhbCIsImEiOiJjbDNkbG05ZnYwOWI0M2tsNXl2bnN4dmk4In0.Um0_v8d_2PNfrllNn9bwGw'
 
-const Map = ({ postcode }) => {
+const Map = () => {
   const mapContainer = useRef(null)
   const map = useRef(null)
-  const [lng, setLng] = useState(51.5)
-  const [lat, setLat] = useState(-0.12)
+  const [lng, setLng] = useState(51.5033)
+  const [lat, setLat] = useState(-0.1195)
   const [zoom, setZoom] = useState(15)
 
   useEffect(() => {
@@ -36,11 +37,11 @@ const Map = ({ postcode }) => {
     const geocodingClient = mbxGeocoding({
       accessToken: mapboxgl.accessToken,
     })
-    map.current.addControl(geocodingClient, 'top-right')
+    map.current.addControl(geocodingClient)
     // geocoding with postcode
     return geocodingClient
       .forwardGeocode({
-        query: 'BS3 5AP',
+        query: 'SW1X 8LB',
         limit: 1,
       })
       .send()
@@ -92,7 +93,7 @@ const Map = ({ postcode }) => {
   }, [fetchData])
   return (
     <div className='mapwindow'>
-      <div className='sidebar'>
+      <div as='div' className='sidebar'>
         Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
       </div>
       <div ref={mapContainer} className='map-container' />

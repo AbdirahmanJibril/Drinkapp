@@ -104,3 +104,12 @@ footer {
     opacity: 0;
   }
 }
+@media screen and (max-width: 480px) {
+  .mapwindow {
+    max-width: fit-content;
+  }
+
+  .d-flex {
+    margin: '5px 0';
+  }
+}
