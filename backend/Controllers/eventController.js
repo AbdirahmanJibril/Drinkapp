@@ -35,6 +35,7 @@ const creatEvent = asyncHandler(async (req, res) => {
   res.redirect('/events')
 })
 
+// search location route GET
 const searchLocation = asyncHandler(async (req, res) => {
   const { keyword } = req.params
 

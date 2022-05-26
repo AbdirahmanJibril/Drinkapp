@@ -15,15 +15,6 @@ const loadingpage = () => {
         </Carousel.Item>
       </Carousel>
     </Link>
-    // <Link to='/events'>
-    //   <Container
-    //     fluid
-    //     style={{
-    //       backgroundImage: 'url(/images/image4.png)',
-    //       height: '768px',
-    //       width: '1300',
-    //     }}></Container>
-    // </Link>
   )
 }
 

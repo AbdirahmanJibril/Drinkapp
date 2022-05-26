@@ -1,10 +1,10 @@
 import React, { useRef, useEffect, useCallback, useState } from 'react'
 
-import 'mapbox-gl/dist/mapbox-gl.css'
-
+import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css'
 import mapboxgl from '!mapbox-gl' // eslint-disable-line import/no-webpack-loader-syntax
 import mbxGeocoding from '@mapbox/mapbox-sdk/services/geocoding'
-import { Col, Row } from 'react-bootstrap'
+import Geocoder from 'react-map-gl-geocoder'
+
 mapboxgl.accessToken =
   'pk.eyJ1IjoiaWJuZWdhbCIsImEiOiJjbDNkbG05ZnYwOWI0M2tsNXl2bnN4dmk4In0.Um0_v8d_2PNfrllNn9bwGw'
 
@@ -33,11 +33,12 @@ const Map = () => {
       setZoom(map.current.getZoom().toFixed(2))
     })
   })
+
   const fetchData = useCallback(() => {
-    const geocodingClient = mbxGeocoding({
+    const geocodingClient = new mbxGeocoding({
       accessToken: mapboxgl.accessToken,
     })
-    map.current.addControl(geocodingClient)
+
     // geocoding with postcode
     return geocodingClient
       .forwardGeocode({
@@ -73,7 +74,7 @@ const Map = () => {
     results.then(marker => {
       // create a HTML element for each feature
       var el = document.createElement('div')
-      el.className = 'marker'
+      el.className = 'map'
 
       // make a marker for each feature and add it to the map
       new mapboxgl.Marker(el)
@@ -91,11 +92,13 @@ const Map = () => {
       })
     })
   }, [fetchData])
+
   return (
     <div className='mapwindow'>
       <div as='div' className='sidebar'>
         Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
       </div>
+
       <div ref={mapContainer} className='map-container' />
     </div>
   )

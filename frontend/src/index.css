@@ -35,6 +35,7 @@ footer {
 
 .map-container {
   height: 400px;
+  margin: 5px 0;
 }
 
 .mapwindow {

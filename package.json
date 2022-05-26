@@ -19,10 +19,12 @@
     "express-async-handler": "^1.2.0",
     "mapbox": "^1.0.0-beta10",
     "mapbox-gl": "^2.8.2",
-    "mongoose": "^6.3.3"
+    "mongoose": "^6.3.3",
+    "react-map-gl-geocoder": "^2.2.0"
   },
   "devDependencies": {
     "concurrently": "^7.2.0",
-    "nodemon": "^2.0.16"
+    "nodemon": "^2.0.16",
+    "typescript": "^4.7.2"
   }
 }

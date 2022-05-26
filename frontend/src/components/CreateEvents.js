@@ -1,31 +1,21 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-
 import axios from 'axios'
+import Message from './Message'
 import { Form, Row, Col, Button } from 'react-bootstrap'
 
 const CreatEvent = () => {
   const [title, setTitle] = useState('')
   const [guests, setGuests] = useState([])
-  const [time, setTime] = useState(new Date().toLocaleString())
+  const [time, setTime] = useState(new Date('26/05/2022').toLocaleString())
   const [eventType, setEventType] = useState('')
   const [venue, setVenue] = useState('')
   const [postcode, setPostcode] = useState('')
   const [user, setUser] = useState('')
   const [description, setDescription] = useState('')
 
-  const validatePostCode = () => {
-    const postcode = document.getElementById('postcode')
-    const postcodeRegEX = /^[a-zA-Z]{1,2}[0-9]{1,2}(\s?[0-9][a-zA-Z]{2}$)/i
-
-    if (!postcodeRegEX.test(postcode)) {
-      console.log('wrong postcode')
-    } else {
-      console.log('postcode is good')
-    }
-  }
-  validatePostCode()
   const navigate = useNavigate()
+
   const submitHandler = e => {
     e.preventDefault()
     axios.post('/events', {
@@ -43,8 +33,7 @@ const CreatEvent = () => {
   return (
     <Row className='justify-content-md-center'>
       <Col sm={12} md={6}>
-        {/* {message && <message variant='danger'>{message}</message>}
-              {error && <Message variant='danger'>{error}</Message>} */}
+        {Message && <message variant='danger'>{Message}</message>}
 
         <h1>Create Event</h1>
 
