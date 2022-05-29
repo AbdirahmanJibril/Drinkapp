@@ -9,7 +9,13 @@ const Header = () => {
         <Navbar.Brand href='/'>Drinkapp</Navbar.Brand>
         <Navbar.Toggle aria-controls='navbarScroll' />
         <Navbar.Collapse id='navbarScroll'>
-          <Nav className='mx-auto' style={{ maxHeight: '100px' }} navbarScroll>
+          <Nav
+            className='mx-auto'
+            style={{
+              fontSize: 'large',
+              fontWeight: '600',
+            }}
+            navbarScroll>
             <Nav.Link href='/'>Home</Nav.Link>
             <Nav.Link href='/events'>Events</Nav.Link>
             <Nav.Link href='/newevent'>Create Event</Nav.Link>

@@ -12,7 +12,6 @@ const DetailScreen = () => {
   useEffect(() => {
     const fetchEvent = async () => {
       const { data } = await axios.get(`/events/${id}`)
-
       setEvent(data)
     }
     fetchEvent()

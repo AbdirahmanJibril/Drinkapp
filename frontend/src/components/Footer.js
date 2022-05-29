@@ -4,7 +4,7 @@ import { Container, Row, Col } from 'react-bootstrap/'
 const Footer = () => {
   return (
     <footer>
-      <Container>
+      <Container style={{ textAlign: 'center' }}>
         <Row>
           <Col>copyright &copy; Drinkapp</Col>
         </Row>

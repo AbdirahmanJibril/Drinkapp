@@ -11,12 +11,7 @@ const getEvents = asyncHandler(async (req, res) => {
 const getEvent = asyncHandler(async (req, res) => {
   const anEvent = await eventModel.findById(req.params.id)
 
-  if (anEvent) {
-    res.json(anEvent)
-  } else {
-    res.status(404)
-    throw new Error('Event Not Found')
-  }
+  res.json(anEvent)
 })
 
 // create event POST
@@ -42,8 +37,11 @@ const searchLocation = asyncHandler(async (req, res) => {
   const searchVenue = await eventModel.find({
     ...{ venue: new RegExp(keyword, 'i') },
   })
-
-  res.json(searchVenue)
+  if (searchVenue) {
+    res.json(searchVenue)
+  } else {
+    throw new Error('Not found')
+  }
 })
 
 export { getEvents, getEvent, creatEvent, searchLocation }

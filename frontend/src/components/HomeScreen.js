@@ -32,7 +32,7 @@ function HomeScreen() {
 
             <Link to={`/events/${e._id}`}>Details</Link>
 
-            <Card.Footer className='text-muted'>2 days ago</Card.Footer>
+            <Card.Footer className='text-muted'>{`Organiser:  ${e.user}`}</Card.Footer>
           </Card>
         </Col>
       ))}
