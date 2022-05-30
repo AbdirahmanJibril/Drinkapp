@@ -2,24 +2,28 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import Message from './Message'
+import Loader from '../Loader'
 import { Card, Col, Container, Row } from 'react-bootstrap'
 import { Link, useParams } from 'react-router-dom'
 
 function HomeScreen() {
   const params = useParams()
   const [Events, setEvents] = useState([])
+  const [status, setStatus] = useState()
 
   useEffect(() => {
     const fetchEvents = async () => {
-      const { data } = await axios.get('/events')
-
-      setEvents(data)
+      const response = await axios.get('/events')
+      setStatus(response.statusText)
+      setEvents(response.data)
     }
     fetchEvents()
   }, [params])
   return (
     <Container fluid>
-      {Events.length === 0 ? (
+      {status !== 'OK' ? (
+        <Loader />
+      ) : Events.length === 0 ? (
         <Message>
           No events created yet!!!, create some events to them here
         </Message>

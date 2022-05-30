@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-
+import Loader from '../Loader'
 import { Link, useParams } from 'react-router-dom'
 import { useEffect } from 'react'
 import { Row, Col, Card } from 'react-bootstrap'
@@ -9,24 +9,13 @@ import Message from './Message'
 const Search = () => {
   const { keyword } = useParams()
   const [searched, setSearched] = useState([])
-
-  // useEffect(() => {
-  //   const searchEvent = async () => {
-  //     try {
-  //       const response = await axios.get(`/events/search/${keyword}`)
-  //       console.log(response)
-  //     } catch (error) {
-  //       console.error(error)
-  //     }
-  //   }
-  //   searchEvent()
-  // }, [keyword])
+  const [status, setStatus] = useState()
 
   useEffect(() => {
     const searchEvent = async () => {
-      const { data } = await axios.get(`/events/search/${keyword}`)
-
-      setSearched(data)
+      const response = await axios.get(`/events/search/${keyword}`)
+      setStatus(response.statusText)
+      setSearched(response.data)
     }
 
     searchEvent()
@@ -34,9 +23,11 @@ const Search = () => {
 
   return (
     <div>
-      {searched.length === 0 ? (
+      {status !== 'OK' ? (
+        <Loader />
+      ) : searched.length === 0 ? (
         <Message variant='danger'>
-          <h5>No Event Found</h5>
+          <h5>No Events Found</h5>
         </Message>
       ) : (
         <Row>
