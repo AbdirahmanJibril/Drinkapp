@@ -16,9 +16,21 @@ const Header = () => {
               fontWeight: '600',
             }}
             navbarScroll>
-            <Nav.Link href='/'>Home</Nav.Link>
-            <Nav.Link href='/events'>Events</Nav.Link>
-            <Nav.Link href='/newevent'>Create Event</Nav.Link>
+            <Nav.Item>
+              {' '}
+              <Nav.Link href='/'>Home</Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              {' '}
+              <Nav.Link href='/events'>Events</Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              {' '}
+              <Nav.Link href='/newevent'>Create Event</Nav.Link>
+            </Nav.Item>
+
+            {/* <Nav.Link href='/events'>Events</Nav.Link>
+            <Nav.Link href='/newevent'>Create Event</Nav.Link> */}
           </Nav>
         </Navbar.Collapse>
         <SearchBox />

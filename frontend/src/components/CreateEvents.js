@@ -44,10 +44,10 @@ const CreatEvent = () => {
   }
 
   return (
-    <Container fluid style={{ backgroundColor: '#EBEBEB' }}>
+    <Container fluid style={{ backgroundColor: '#EBEBEB', margin: '70px 0' }}>
       <h1 style={{ margin: '20px 0' }}>Event Create Form</h1>
       <Form noValidate validated={validated} onSubmit={handleSubmit}>
-        <Row className='mb-3'>
+        <Row className='my-3'>
           <Form.Group as={Col} controlId='title'>
             <Form.Control
               required
@@ -88,6 +88,7 @@ const CreatEvent = () => {
             <Form.Control
               required
               type='text'
+              placeholder='event post code'
               value={postcode}
               onChange={e => setPostcode(e.target.value)}
             />
@@ -135,10 +136,17 @@ const CreatEvent = () => {
               Please provide event type.
             </Form.Control.Feedback>
           </Form.Group>
-          <Form.Group as={Col} sm='12' controlId='description'>
+          <Form.Group
+            as={Col}
+            sm='12'
+            className='my-3'
+            style={{ fontweight: '300' }}
+            controlId='description'>
             <Form.Control
+              as='textarea'
+              placeholder='Leave a comment here'
+              style={{ height: '150px' }}
               type='text'
-              placeholder='description'
               required
               value={description}
               onChange={e => setDescription(e.target.value)}
